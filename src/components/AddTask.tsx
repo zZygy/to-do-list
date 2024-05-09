@@ -1,20 +1,30 @@
+import { Task } from "../interfaces/Task";
 import { Tasks } from "./Tasks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const AddTask = () => {
   const [ task, setTask ] = useState("");
-  const [ taskList, setTaskList ] = useState<string[]>([]);
+  const [taskList, setTaskList] = useState<Task[]>([]);
+console.log(taskList);
+useEffect(() => {
+  const storedTaskListJSON = localStorage.getItem('taskList');
+  if (storedTaskListJSON) {
+    setTaskList(JSON.parse(storedTaskListJSON));
+  }
+}, []);
 
   const handleTask = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTask(event.target.value);
   }
 
   const handleAddTask = () => {
-    const taskFormatted = task.trim();
-    const updateTaskList = [ taskFormatted, ...taskList ];
-    setTaskList(updateTaskList);
-    setTask("");
+    const newTask: Task = { task: task, checked: false };
+    const updatedTaskList = [...taskList, newTask];
+    setTaskList(updatedTaskList);
+    localStorage.setItem("taskList", JSON.stringify(updatedTaskList));
+    setTask('');
   }
+  
 
   return (
     <>
