@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export const AddTask = () => {
   const [ task, setTask ] = useState("");
   const [taskList, setTaskList] = useState<Task[]>([]);
-console.log(taskList);
+
 useEffect(() => {
   const storedTaskListJSON = localStorage.getItem('taskList');
   if (storedTaskListJSON) {
@@ -28,21 +28,23 @@ useEffect(() => {
 
   return (
     <>
-      <div className='flex'>
-        <input type='text' 
-          placeholder='Write your task...'
-          required 
+      <div className="relative">
+        <input 
+          type="text" 
+          className="block w-full p-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+          placeholder="Write your task..." 
+          required
           value={task}
           onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleTask(event)}
-          className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-70 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500' 
         />
-        
+
         <button 
-          type='submit' 
-          className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-          onClick={handleAddTask}
-        >
-          Add
+          type="submit" 
+          className="text-white absolute end-2.5 bottom-2.5 bg-[#B24BF3] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2"
+          onClick={handleAddTask}>
+          <svg className="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h14m-7 7V5"/>
+          </svg>
         </button>
       </div>
 

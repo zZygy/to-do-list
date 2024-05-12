@@ -5,8 +5,8 @@ import { ListName } from './components/ListName'
 
 function App() {
   return (
-    <div className='flex justify-center items-center bg-slate-400 h-screen'>
-      <div className='bg-gray-50 p-10 w-90 rounded'>
+    <div className="flex justify-center bg-[#F1F5F8] h-screen text-lg">
+      <div className='w-2/5 h-fit mt-10 p-10 bg-white rounded-xl'>
         <ListName title='MI TODO LIST'/>
         <AddTask />
       </div>
