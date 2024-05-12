@@ -12,6 +12,7 @@ export const TaskItem = ({
   taskList: Task[];
   setTaskList: React.Dispatch<React.SetStateAction<Task[]>>;
 }) => {
+  
   const [editIndex, setEditIndex] = useState<number>(-1);
   const [newTaskName, setNewTaskName] = useState<string>("");
 
