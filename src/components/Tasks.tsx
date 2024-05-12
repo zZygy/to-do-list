@@ -13,7 +13,7 @@ export const Tasks = ({
   };
 
   return (
-    <>
+    <div className="pt-8">
       {taskList.map((task, index) => (
         <div key={index}>
           <TaskItem
@@ -34,6 +34,6 @@ export const Tasks = ({
           Borrar tareas
         </button>
       )}
-    </>
+    </div>
   );
 };
